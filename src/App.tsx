@@ -1,14 +1,12 @@
 import Map from 'react-map-gl';
 import DeckGL, { MapViewState, PickingInfo } from 'deck.gl';
-import { BaseBallCardEventBus } from './events/events';
+import { EntityEvents, MapEvents, tabsBroadcast } from './events/events';
 import { Card } from './components/card-manager/card-manager';
 import { BartStationLayer } from './components/bart-scatterplot';
 import { AppBar } from './components/app-bar';
 import { Layout } from './layout';
 import { CustomMapController } from './components/map-controller/map-controller';
-import { MapEvents } from './events/events';
-import { BroadcastEventChannel } from './channels/broadcast-event-channel';
-import { createEventBus } from 'ts-event-bus';
+import { PingMessage } from './events/types';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoiYWVzc2V4MjQiLCJhIjoiY20xaDRpaHhxMGFzNDJsbjBhYjFqaHdtZyJ9.NZLt-TFC8T9JRtIV-5ob8g';
@@ -24,26 +22,27 @@ const CONTROLLER = {
   type: CustomMapController,
 };
 
-const AppEventBus = createEventBus({
-  events: MapEvents,
-  channels: [new BroadcastEventChannel('map')],
-});
-
-const handleOnClick = (info: PickingInfo) => {
-  const eventInfo = {
-    layer: info?.layer?.id,
-    id: info.picked ? info.object.name : null,
-    picked: info.picked,
-    coordinates: info.picked ? info.object.coordinates : [NaN, NaN],
-  };
-
-  BaseBallCardEventBus.openCard(eventInfo);
+const handlePing = ({ payload }: PingMessage) => {
+  console.log(`ping from ${payload}`);
 };
 
-AppEventBus.ping.on((args) => console.log(`ping from ${args}`));
+const handleOnClick = (info: PickingInfo) => {
+  if (info.picked && info?.layer?.id) {
+    const eventInfo = {
+      layer: info?.layer?.id,
+      id: info.picked ? info.object.name : null,
+      picked: info.picked,
+      coordinates: info.picked ? info.object.coordinates : [NaN, NaN],
+    };
+
+    tabsBroadcast.emit(EntityEvents.OPEN_CARD, eventInfo);
+  }
+};
+
+tabsBroadcast.on(MapEvents.PING, handlePing);
 
 setInterval(() => {
-  AppEventBus.ping('app');
+  tabsBroadcast.emit(MapEvents.PING, 'app');
 }, 3000);
 
 export function App() {

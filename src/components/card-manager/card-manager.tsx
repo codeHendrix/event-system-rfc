@@ -4,7 +4,7 @@ import {
   BART_LAYER_NAME,
 } from '../bart-scatterplot';
 import { BBCardTwo } from './cards/bbcard-two';
-import { BaseBallCardEventBus } from '../../events/events';
+import { EntityEvents, tabsBroadcast } from '../../events/events';
 
 type CardLookup = Record<
   string,
@@ -29,10 +29,15 @@ export function Card() {
     id: string;
   }>(null);
 
-  BaseBallCardEventBus.openCard.on(({ layer, id, picked, coordinates }) => {
+  tabsBroadcast.on(EntityEvents.OPEN_CARD, ({ payload }) => {
+    console.log(payload);
+    const { layer, id, picked, coordinates } = payload;
+    console.log('inside on open card', { layer, id, picked, coordinates });
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     picked && layer ? setCard({ layer, id, coordinates }) : setCard(null);
   });
+
+  tabsBroadcast.on(EntityEvents.CLOSE_CARD, () => setCard(null));
 
   if (!card) {
     return null;

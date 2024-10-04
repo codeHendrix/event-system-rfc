@@ -1,17 +1,9 @@
 import { CenterFocusWeak, Close, ZoomIn, Link } from '@mui/icons-material';
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { BroadcastEventChannel } from '../../channels/broadcast-event-channel';
-import { createEventBus } from 'ts-event-bus';
-import { MapEvents } from '../../events/events';
-
-// const EventBus = createEventBus({
-//   events: MapEvents,
-//   channels: [new BroadcastEventChannel('map')],
-// });
+import { tabsBroadcast, EntityEvents, MapEvents } from '../../events/events';
 
 export function Controls({ coordinates }: { coordinates: [number, number] }) {
   const handleZoomTo = () => {
-    console.log(coordinates);
     const event = {
       zoomTo: true,
       bufferNM: 5,
@@ -21,8 +13,7 @@ export function Controls({ coordinates }: { coordinates: [number, number] }) {
       },
     };
 
-    // @ts-expect-error who cares
-    // EventBus.centerOn(event);
+    tabsBroadcast.emit(MapEvents.CENTER_ON, event);
   };
 
   const handleCenterOn = () => {
@@ -35,9 +26,10 @@ export function Controls({ coordinates }: { coordinates: [number, number] }) {
       },
     };
 
-    // @ts-expect-error who cares
-    // EventBus.centerOn(event);
+    tabsBroadcast.emit(MapEvents.CENTER_ON, event);
   };
+
+  const handleClose = () => tabsBroadcast.emit(EntityEvents.CLOSE_CARD, null);
 
   return (
     <Stack direction="row" spacing={3}>
@@ -57,7 +49,7 @@ export function Controls({ coordinates }: { coordinates: [number, number] }) {
         </IconButton>
       </Tooltip>
       <Tooltip title="close">
-        <IconButton>
+        <IconButton onClick={handleClose}>
           <Close />
         </IconButton>
       </Tooltip>

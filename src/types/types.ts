@@ -5,9 +5,3 @@ export type PanToParams = {
   bufferNM: number;
   geometry: AllGeoJSON;
 };
-
-export type ChannelType =
-  | 'map'
-  | 'baseball-card'
-  | 'offscreen-indicators'
-  | 'other';

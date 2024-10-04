@@ -1,25 +1,20 @@
 import { FlyToInterpolator, MapController, WebMercatorViewport } from 'deck.gl';
-import { MapEvents } from '../../events/events';
 import { PanToParams } from '../../types';
 import center from '@turf/center';
 import { getBufferBBox } from '../../utils';
 import { ControllerOpts } from './types';
-import { createEventBus } from 'ts-event-bus';
-import { BroadcastEventChannel } from '../../channels/broadcast-event-channel';
+import { MapEvents, tabsBroadcast } from '../../events/events';
 
 const defaultBufferNM = 20;
 const TRANSITION_DURATION = 180;
 const TRANSITION_INTERPOLATER = new FlyToInterpolator();
 
-// const EventBus = createEventBus({
-//   events: MapEvents,
-//   channels: [new BroadcastEventChannel('map')],
-// });
-
 export class CustomMapController extends MapController {
   constructor(props: ControllerOpts) {
     super(props);
-    // EventBus.centerOn.on((args: PanToParams) => this.zoomTo(args));
+    tabsBroadcast.on(MapEvents.CENTER_ON, ({ payload }) =>
+      this.zoomTo(payload)
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,8 +32,6 @@ export class CustomMapController extends MapController {
       const centerCoords = Array.isArray(geometry)
         ? geometry
         : center(geometry).geometry.coordinates;
-
-      console.log({ centerCoords });
 
       const next = {
         longitude: centerCoords[0],

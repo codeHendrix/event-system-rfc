@@ -2,14 +2,12 @@ import { Paper } from '@mui/material';
 import data from './data/bart-stations.json';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Controls } from './components/baseball-card/controls';
-import { MapEvents } from './events/events';
-import { BroadcastEventChannel } from './channels/broadcast-event-channel';
-import { createEventBus } from 'ts-event-bus';
+import { MapEvents, tabsBroadcast } from './events/events';
+import { PingMessage } from './events/types';
 
-const DashboardEventBus = createEventBus({
-  events: MapEvents,
-  channels: [new BroadcastEventChannel('map')],
-});
+const handlePing = ({ payload }: PingMessage) => {
+  console.log(`ping from ${payload}`);
+};
 
 const columns: GridColDef[] = [
   { field: 'code', headerName: 'Id', width: 70 },
@@ -29,7 +27,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'actions',
-    headerName: 'controls',
+    headerName: 'Actions',
     sortable: false,
     renderCell: ({ row }) => {
       return <Controls coordinates={row.coordinates} />;
@@ -39,13 +37,7 @@ const columns: GridColDef[] = [
 ];
 const rows = data.map((el) => ({ id: el.code, ...el }));
 
-DashboardEventBus.ping.on((args) =>
-  console.log(`pong from ${args} in dashboard`)
-);
-
-// setInterval(() => {
-//   DashboardEventBus.ping('dashboard');
-// }, 3000);
+tabsBroadcast.on(MapEvents.PING, handlePing);
 
 export function Dashboard() {
   return (
@@ -54,7 +46,6 @@ export function Dashboard() {
         rows={rows}
         columns={columns}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
         sx={{ border: 0 }}
       />
     </Paper>
