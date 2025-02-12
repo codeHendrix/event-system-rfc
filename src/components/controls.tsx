@@ -5,7 +5,7 @@ import {
   OpenInBrowserRounded,
 } from '@mui/icons-material';
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { EventBus } from '../event-bus/event-bus';
+import { EventBusUtils } from '../event-bus/event-bus';
 import { OpenCardParams } from '../types';
 
 type CONTROL_TITLES = ['center on', 'zoom to', 'open card', 'close card'];
@@ -22,12 +22,13 @@ export function Controls({
   hideControls = [],
 }: ControlProps) {
   const geometry = { type: 'Point', coordinates };
+  const EventBus = EventBusUtils.getEventBus();
 
   function handlePanTo(
     zoomTo: boolean,
     geometry: { type: string; coordinates: [number, number] }
   ) {
-    EventBus.panTo({
+    EventBus?.panTo({
       zoomTo,
       bufferNM: 5,
       geometry,
@@ -42,10 +43,10 @@ export function Controls({
     handlePanTo(false, geometry);
   };
 
-  const handleClose = () => EventBus.closeCard();
+  const handleClose = () => EventBus?.closeCard();
   const handleOpen = () => {
     if (cardEventInfo) {
-      EventBus.openCard(cardEventInfo);
+      EventBus?.openCard(cardEventInfo);
       return;
     }
   };

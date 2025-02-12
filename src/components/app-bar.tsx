@@ -6,12 +6,13 @@ import {
   Tooltip,
 } from '@mui/material';
 import { GridView } from '@mui/icons-material';
+import { ChannelSelector } from './channel-selector';
 
 export function AppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MuiAppBar position="static">
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Tooltip title="Dashboard">
             <IconButton
               size="small"
@@ -22,6 +23,7 @@ export function AppBar() {
               <GridView fontSize="inherit" />
             </IconButton>
           </Tooltip>
+          <ChannelSelector />
         </Toolbar>
       </MuiAppBar>
     </Box>

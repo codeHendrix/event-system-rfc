@@ -5,7 +5,8 @@ import { AppBar } from './components/app-bar';
 import { Layout } from './layout/layout';
 import { CustomMapController } from './map-controller';
 import { layers } from './components/layers';
-import { EventBus } from './event-bus/event-bus';
+import { EventBusUtils } from './event-bus/event-bus';
+import { useChannelStore } from './store';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoiYWVzc2V4MjQiLCJhIjoiY20xaDRpaHhxMGFzNDJsbjBhYjFqaHdtZyJ9.NZLt-TFC8T9JRtIV-5ob8g';
@@ -21,19 +22,26 @@ const CONTROLLER = {
   type: CustomMapController,
 };
 
-const handleOnClick = (info: PickingInfo) => {
-  if (info.picked && info?.layer?.id) {
-    const eventInfo = {
-      id: info.layer.id,
-      picked: info.picked,
-      coordinates: info.object.coordinates ?? [NaN, NaN],
-    };
-
-    EventBus.openCard(eventInfo);
-  }
-};
-
 export function App() {
+  const { selectedChannel } = useChannelStore();
+  const { initializeEventBus } = EventBusUtils;
+
+  console.log({ selectedChannel });
+
+  const EventBus = initializeEventBus(selectedChannel);
+
+  const handleOnClick = (info: PickingInfo) => {
+    if (info.picked && info?.layer?.id) {
+      const eventInfo = {
+        id: info.layer.id,
+        picked: info.picked,
+        coordinates: info.object.coordinates ?? [NaN, NaN],
+      };
+
+      EventBus.openCard(eventInfo);
+    }
+  };
+
   return (
     <Layout
       top={<AppBar />}
