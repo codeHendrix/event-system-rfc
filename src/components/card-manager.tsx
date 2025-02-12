@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Information } from './information';
 import { EventBus } from '../event-bus/event-bus';
 
@@ -11,25 +11,24 @@ type CardState = null | {
 export function CardManager() {
   const [card, setCard] = useState<CardState>(null);
 
-  const openCardUnsub = EventBus.openCard.on((payload) => {
-    const { id, picked, coordinates } = payload;
+  useEffect(() => {
+    const openCardUnsub = EventBus.openCard.on((payload) => {
+      const { id, picked, coordinates } = payload;
 
-    if (picked && id) {
-      setCard({ id, coordinates });
-      return;
-    }
+      if (picked && id) {
+        setCard({ id, coordinates });
+        return;
+      }
 
-    setCard(null);
-  });
+      setCard(null);
+    });
 
-  const closeCardUnsub = EventBus.closeCard.on(() => setCard(null));
-  // useEffect(() => {
-
-  //   return () => {
-  //     openCardUnsub();
-  //     closeCardUnsub();
-  //   };
-  // }, []);
+    const closeCardUnsub = EventBus.closeCard.on(() => setCard(null));
+    return () => {
+      openCardUnsub();
+      closeCardUnsub();
+    };
+  }, []);
 
   if (!card) {
     return null;
