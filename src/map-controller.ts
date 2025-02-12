@@ -1,20 +1,19 @@
 import { FlyToInterpolator, MapController, WebMercatorViewport } from 'deck.gl';
-import { PanToParams } from '../../types';
 import center from '@turf/center';
-import { getBufferBBox } from '../../utils';
-import { ControllerOpts } from './types';
-import { MapEvents, tabsBroadcast } from '../../events/events';
+import { getBufferBBox } from './utils';
+import { EventBus } from './event-bus/event-bus';
+import type { AllGeoJSON } from '@turf/helpers';
+import type { ControllerOpts, PanToParams } from './types';
 
 const defaultBufferNM = 20;
 const TRANSITION_DURATION = 180;
 const TRANSITION_INTERPOLATER = new FlyToInterpolator();
+// const EventBus = getEventBus();
 
 export class CustomMapController extends MapController {
   constructor(props: ControllerOpts) {
     super(props);
-    tabsBroadcast.on(MapEvents.CENTER_ON, ({ payload }) =>
-      this.zoomTo(payload)
-    );
+    EventBus.panTo.on((payload) => this.zoomTo(payload));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,7 +30,7 @@ export class CustomMapController extends MapController {
 
       const centerCoords = Array.isArray(geometry)
         ? geometry
-        : center(geometry).geometry.coordinates;
+        : center(geometry as AllGeoJSON).geometry.coordinates;
 
       const next = {
         longitude: centerCoords[0],
@@ -45,7 +44,7 @@ export class CustomMapController extends MapController {
       // Calculate zoom based on a buffer of the current geometry
       if (zoomTo) {
         const [minLon, minLat, maxLon, maxLat] = getBufferBBox(
-          geometry,
+          geometry as AllGeoJSON,
           bufferNM ?? defaultBufferNM
         );
 
@@ -61,7 +60,6 @@ export class CustomMapController extends MapController {
 
       this.setMapStateProps(next);
     } catch (e: unknown) {
-      // protecting this at the root level so an exception doesn't pop if bad data makes it here
       console.log('ERROR', e);
       return;
     }

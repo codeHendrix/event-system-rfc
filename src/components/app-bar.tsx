@@ -17,7 +17,7 @@ export function AppBar() {
               size="small"
               href="/dashboard/"
               referrerPolicy="no-referrer"
-              target="_blank"
+              target="dashboard"
             >
               <GridView fontSize="inherit" />
             </IconButton>

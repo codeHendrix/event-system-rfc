@@ -1,8 +1,20 @@
 import { Viewport } from 'deck.gl';
 import { EventManager } from 'mjolnir.js';
 
+export type PanToParams = {
+  zoomTo: boolean;
+  bufferNM: number;
+  geometry: { type: string; coordinates: [number, number] };
+};
+
+export type OpenCardParams = {
+  id: string;
+  picked: boolean;
+  coordinates: [number, number];
+};
+
 /**
- * NOTE: deck.gl doesnt export a type for the constructor props so have to make my own
+ * NOTE: STOLEN DIRECTLY FROM APP
  * */
 export type ControllerOpts = {
   /**

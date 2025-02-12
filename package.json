@@ -27,10 +27,13 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-map-gl": "^7.1.7",
-    "tabs-broadcast": "^3.1.12"
+    "tabs-broadcast": "^3.1.12",
+    "ts-event-bus": "^4.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/jest": "^29.5.14",
+    "@types/mocha": "^10.0.9",
     "@types/node": "^22.7.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

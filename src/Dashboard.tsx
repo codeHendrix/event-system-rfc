@@ -1,13 +1,8 @@
 import { Paper } from '@mui/material';
 import data from './data/bart-stations.json';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Controls } from './components/baseball-card/controls';
-import { MapEvents, tabsBroadcast } from './events/events';
-import { PingMessage } from './events/types';
-
-const handlePing = ({ payload }: PingMessage) => {
-  console.log(`ping from ${payload}`);
-};
+import { Controls } from './components/controls';
+import { SCATTERPLOT_LAYER_1 } from './constants';
 
 const columns: GridColDef[] = [
   { field: 'code', headerName: 'Id', width: 70 },
@@ -30,14 +25,25 @@ const columns: GridColDef[] = [
     headerName: 'Actions',
     sortable: false,
     renderCell: ({ row }) => {
-      return <Controls coordinates={row.coordinates} />;
+      // again this is silly but just for example sake.
+      const eventInfo = {
+        layer: SCATTERPLOT_LAYER_1,
+        id: row.name,
+        picked: true,
+        coordinates: row.coordinates,
+      };
+      return (
+        <Controls
+          coordinates={row.coordinates}
+          hideControls={['close card']}
+          cardEventInfo={eventInfo}
+        />
+      );
     },
     width: 200,
   },
 ];
 const rows = data.map((el) => ({ id: el.code, ...el }));
-
-tabsBroadcast.on(MapEvents.PING, handlePing);
 
 export function Dashboard() {
   return (

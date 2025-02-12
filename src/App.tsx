@@ -1,12 +1,11 @@
 import Map from 'react-map-gl';
 import DeckGL, { MapViewState, PickingInfo } from 'deck.gl';
-import { EntityEvents, MapEvents, tabsBroadcast } from './events/events';
-import { Card } from './components/card-manager/card-manager';
-import { BartStationLayer } from './components/bart-scatterplot';
+import { CardManager } from './components/card-manager';
 import { AppBar } from './components/app-bar';
-import { Layout } from './layout';
-import { CustomMapController } from './components/map-controller/map-controller';
-import { PingMessage } from './events/types';
+import { Layout } from './layout/layout';
+import { CustomMapController } from './map-controller';
+import { layers } from './components/layers';
+import { EventBus } from './event-bus/event-bus';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoiYWVzc2V4MjQiLCJhIjoiY20xaDRpaHhxMGFzNDJsbjBhYjFqaHdtZyJ9.NZLt-TFC8T9JRtIV-5ob8g';
@@ -22,28 +21,17 @@ const CONTROLLER = {
   type: CustomMapController,
 };
 
-const handlePing = ({ payload }: PingMessage) => {
-  console.log(`ping from ${payload}`);
-};
-
 const handleOnClick = (info: PickingInfo) => {
   if (info.picked && info?.layer?.id) {
     const eventInfo = {
-      layer: info?.layer?.id,
-      id: info.picked ? info.object.name : null,
+      id: info.layer.id,
       picked: info.picked,
-      coordinates: info.picked ? info.object.coordinates : [NaN, NaN],
+      coordinates: info.object.coordinates ?? [NaN, NaN],
     };
 
-    tabsBroadcast.emit(EntityEvents.OPEN_CARD, eventInfo);
+    EventBus.openCard(eventInfo);
   }
 };
-
-tabsBroadcast.on(MapEvents.PING, handlePing);
-
-setInterval(() => {
-  tabsBroadcast.emit(MapEvents.PING, 'app');
-}, 3000);
 
 export function App() {
   return (
@@ -52,7 +40,7 @@ export function App() {
       map={
         <>
           <DeckGL
-            layers={[BartStationLayer]}
+            layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
             controller={CONTROLLER}
             onClick={handleOnClick}
@@ -62,7 +50,7 @@ export function App() {
               mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
               mapStyle={MAP_STYLE}
             />
-            <Card />
+            <CardManager />
           </DeckGL>
         </>
       }

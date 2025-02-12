@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Lafayette (LAFY)",
+    "coordinates": [
+      -122.123801,
+      38.03838539108059
+    ],
+    "exits": "3616"
+  },
+  {
+    "name": "12th St. Oakland City Center (12TH)",
+    "coordinates": [
+      -122.271604,
+      37.94865760753878
+    ],
+    "exits": "13547"
+  },
+  {
+    "name": "16th St. Mission (16TH)",
+    "coordinates": [
+      -122.419694,
+      37.91005656052556
+    ],
+    "exits": "12351"
+  },
+  {
+    "name": "19th St. Oakland (19TH)",
+    "coordinates": [
+      -122.269029,
+      37.95286350368357
+    ],
+    "exits": "13090"
+  },
+  {
+    "name": "24th St. Mission (24TH)",
+    "coordinates": [
+      -122.418466,
+      37.89724887665113
+    ],
+    "exits": "12529"
+  },
+  {
+    "name": "Ashby (ASHB)",
+    "coordinates": [
+      -122.26978,
+      37.998016388492076
+    ],
+    "exits": "5341"
+  },
+  {
+    "name": "Balboa Park (BALB)",
+    "coordinates": [
+      -122.447414,
+      37.866976623702904
+    ],
+    "exits": "9817"
+  },
+  {
+    "name": "Bay Fair (BAYF)",
+    "coordinates": [
+      -122.126871,
+      37.84218123544775
+    ],
+    "exits": "5516"
+  },
+  {
+    "name": "Castro Valley (CAST)",
+    "coordinates": [
+      -122.075567,
+      37.83575039408552
+    ],
+    "exits": "2735"
+  },
+  {
+    "name": "Civic Center/UN Plaza (CIVC)",
+    "coordinates": [
+      -122.413756,
+      37.924522203434286
+    ],
+    "exits": "22626"
+  },
+  {
+    "name": "Colma (COLM)",
+    "coordinates": [
+      -122.466233,
+      37.8296345449445
+    ],
+    "exits": "4214"
+  },
+  {
+    "name": "Coliseum/Oakland Airport (COLS)",
+    "coordinates": [
+      -122.197273,
+      37.899000833410604
+    ],
+    "exits": "5902"
+  },
+  {
+    "name": "Concord (CONC)",
+    "coordinates": [
+      -122.029095,
+      38.118726405026784
+    ],
+    "exits": "6008"
+  },
+  {
+    "name": "Daly City (DALY)",
+    "coordinates": [
+      -122.469081,
+      37.85111701500233
+    ],
+    "exits": "8502"
+  },
+  {
+    "name": "Downtown Berkeley (DBRK)",
+    "coordinates": [
+      -122.268045,
+      38.014858972398955
+    ],
+    "exits": "11762"
+  },
+  {
+    "name": "El Cerrito del Norte (DELN)",
+    "coordinates": [
+      -122.317269,
+      38.07064559376445
+    ],
+    "exits": "8668"
+  },
+  {
+    "name": "Dublin/Pleasanton (DUBL)",
+    "coordinates": [
+      -121.900367,
+      37.84669112419112
+    ],
+    "exits": "7554"
+  },
+  {
+    "name": "Embarcadero (EMBR)",
+    "coordinates": [
+      -122.396742,
+      37.93796987143128
+    ],
+    "exits": "46951"
+  },
+  {
+    "name": "Fremont (FRMT)",
+    "coordinates": [
+      -121.9764,
+      37.70235468265605
+    ],
+    "exits": "8673"
+  },
+  {
+    "name": "Fruitvale (FTVL)",
+    "coordinates": [
+      -122.224274,
+      37.91995731612564
+    ],
+    "exits": "8012"
+  },
+  {
+    "name": "Glen Park (GLEN)",
+    "coordinates": [
+      -122.434092,
+      37.877916353757946
+    ],
+    "exits": "7072"
+  },
+  {
+    "name": "Hayward (HAYW)",
+    "coordinates": [
+      -122.087967,
+      37.815395896135655
+    ],
+    "exits": "5003"
+  },
+  {
+    "name": "Lake Merritt (LAKE)",
+    "coordinates": [
+      -122.265609,
+      37.94247776012934
+    ],
+    "exits": "6604"
+  },
+  {
+    "name": "MacArthur (MCAR)",
+    "coordinates": [
+      -122.267227,
+      37.973407996327936
+    ],
+    "exits": "9228"
+  },
+  {
+    "name": "Millbrae (MLBR)",
+    "coordinates": [
+      -122.38666,
+      37.7447856370471
+    ],
+    "exits": "6149"
+  },
+  {
+    "name": "Montgomery St. (MONT)",
+    "coordinates": [
+      -122.401407,
+      37.93424996327424
+    ],
+    "exits": "45128"
+  },
+  {
+    "name": "North Berkeley (NBRK)",
+    "coordinates": [
+      -122.283451,
+      38.01903186929882
+    ],
+    "exits": "4563"
+  },
+  {
+    "name": "North Concord/Martinez (NCON)",
+    "coordinates": [
+      -122.024597,
+      38.148263674511284
+    ],
+    "exits": "2652"
+  },
+  {
+    "name": "Orinda (ORIN)",
+    "coordinates": [
+      -122.183791,
+      38.02335276253816
+    ],
+    "exits": "2970"
+  },
+  {
+    "name": "Pleasant Hill/Contra Costa Centre (PHIL)",
+    "coordinates": [
+      -122.056013,
+      38.07339352583856
+    ],
+    "exits": "7442"
+  },
+  {
+    "name": "Pittsburg/Bay Point (PITT)",
+    "coordinates": [
+      -121.945154,
+      38.16390228766248
+    ],
+    "exits": "6343"
+  },
+  {
+    "name": "El Cerrito Plaza (PLZA)",
+    "coordinates": [
+      -122.299272,
+      38.048050152237856
+    ],
+    "exits": "4952"
+  },
+  {
+    "name": "Powell St. (POWL)",
+    "coordinates": [
+      -122.406857,
+      37.92998506856898
+    ],
+    "exits": "25621"
+  },
+  {
+    "name": "Richmond (RICH)",
+    "coordinates": [
+      -122.353165,
+      38.08187731611833
+    ],
+    "exits": "4029"
+  },
+  {
+    "name": "Rockridge (ROCK)",
+    "coordinates": [
+      -122.251793,
+      37.98959359655272
+    ],
+    "exits": "5775"
+  },
+  {
+    "name": "San Leandro (SANL)",
+    "coordinates": [
+      -122.161311,
+      37.86761460796095
+    ],
+    "exits": "5921"
+  },
+  {
+    "name": "San Bruno (SBRN)",
+    "coordinates": [
+      -122.416038,
+      37.78275070114799
+    ],
+    "exits": "3634"
+  },
+  {
+    "name": "San Francisco Int'l Airport (SFIA)",
+    "coordinates": [
+      -122.392612,
+      37.76103323655733
+    ],
+    "exits": "4904"
+  },
+  {
+    "name": "South Hayward (SHAY)",
+    "coordinates": [
+      -122.161311,
+      37.86761460796095
+    ],
+    "exits": "2829"
+  }
+]
