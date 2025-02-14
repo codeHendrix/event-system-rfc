@@ -1,5 +1,6 @@
 [
   {
+    "id": "916bc64e-fc5c-42f6-9f3c-faddfafb9789",
     "name": "Lafayette (LAFY)",
     "code": "LF",
     "address": "3601 Deer Hill Road, Lafayette CA 94549",
@@ -8,6 +9,7 @@
     "coordinates": [-122.123801, 37.893394]
   },
   {
+    "id": "938e3e6f-72a6-47e6-9652-6d0e50c048c5",
     "name": "12th St. Oakland City Center (12TH)",
     "code": "12",
     "address": "1245 Broadway, Oakland CA 94612",
@@ -16,6 +18,7 @@
     "coordinates": [-122.271604, 37.803664]
   },
   {
+    "id": "725c3e00-da76-4084-ae6b-afbab4d5721c",
     "name": "16th St. Mission (16TH)",
     "code": "16",
     "address": "2000 Mission Street, San Francisco CA 94110",
@@ -24,6 +27,7 @@
     "coordinates": [-122.419694, 37.765062]
   },
   {
+    "id": "caf1eec8-1231-4557-b799-cdba1f820c30",
     "name": "19th St. Oakland (19TH)",
     "code": "19",
     "address": "1900 Broadway, Oakland CA 94612",
@@ -32,6 +36,7 @@
     "coordinates": [-122.269029, 37.80787]
   },
   {
+    "id": "091d28b5-6cc0-4a40-9b4e-1cbfe7662e6c",
     "name": "24th St. Mission (24TH)",
     "code": "24",
     "address": "2800 Mission Street, San Francisco CA 94110",
@@ -40,6 +45,7 @@
     "coordinates": [-122.418466, 37.752254]
   },
   {
+    "id": "fb053c69-abbc-4193-90eb-02bf9b7c4c5f",
     "name": "Ashby (ASHB)",
     "code": "AS",
     "address": "3100 Adeline Street, Berkeley CA 94703",
@@ -48,6 +54,7 @@
     "coordinates": [-122.26978, 37.853024]
   },
   {
+    "id": "14134b93-9d63-456c-936a-998d4eb2a06a",
     "name": "Balboa Park (BALB)",
     "code": "BP",
     "address": "401 Geneva Avenue, San Francisco CA 94112",
@@ -56,6 +63,7 @@
     "coordinates": [-122.447414, 37.721981]
   },
   {
+    "id": "65574fd1-1f24-48ac-8c71-83e9dba1773d",
     "name": "Bay Fair (BAYF)",
     "code": "BF",
     "address": "15242 Hesperian Blvd., San Leandro CA 94578",
@@ -64,6 +72,7 @@
     "coordinates": [-122.126871, 37.697185]
   },
   {
+    "id": "041951c8-6804-45c8-bcb8-0349ee884d5b",
     "name": "Castro Valley (CAST)",
     "code": "CV",
     "address": "3301 Norbridge Dr., Castro Valley CA 94546",
@@ -72,6 +81,7 @@
     "coordinates": [-122.075567, 37.690754]
   },
   {
+    "id": "6b257081-8328-4636-8287-d006309e70c8",
     "name": "Civic Center/UN Plaza (CIVC)",
     "code": "CC",
     "address": "1150 Market Street, San Francisco CA 94102",
@@ -80,6 +90,7 @@
     "coordinates": [-122.413756, 37.779528]
   },
   {
+    "id": "4ad05c13-7743-4ba9-9bc4-6ccfef19bcc0",
     "name": "Colma (COLM)",
     "code": "CM",
     "address": "365 D Street, Colma CA 94014",
@@ -88,6 +99,7 @@
     "coordinates": [-122.466233, 37.684638]
   },
   {
+    "id": "fc4c1788-ee34-4c2b-a11d-e9d45dafeb94",
     "name": "Coliseum/Oakland Airport (COLS)",
     "code": "CL",
     "address": "7200 San Leandro St., Oakland CA 94621",
@@ -96,6 +108,7 @@
     "coordinates": [-122.197273, 37.754006]
   },
   {
+    "id": "7054b25b-a651-4208-8b3f-66c5c79b679b",
     "name": "Concord (CONC)",
     "code": "CN",
     "address": "1451 Oakland Avenue, Concord CA 94520",
@@ -104,6 +117,7 @@
     "coordinates": [-122.029095, 37.973737]
   },
   {
+    "id": "dc29a470-bd8f-4733-a45d-a5d4a689d549",
     "name": "Daly City (DALY)",
     "code": "DC",
     "address": "500 John Daly Blvd., Daly City CA 94014",
@@ -112,6 +126,7 @@
     "coordinates": [-122.469081, 37.706121]
   },
   {
+    "id": "7c5f1c14-8692-46d0-aecc-d1689d35c92d",
     "name": "Downtown Berkeley (DBRK)",
     "code": "BK",
     "address": "2160 Shattuck Avenue, Berkeley CA 94704",
@@ -120,6 +135,7 @@
     "coordinates": [-122.268045, 37.869867]
   },
   {
+    "id": "28c5b6fc-6c07-433f-b29a-c2467e8448d1",
     "name": "El Cerrito del Norte (DELN)",
     "code": "EN",
     "address": "6400 Cutting Blvd., El Cerrito CA 94530",
@@ -128,6 +144,7 @@
     "coordinates": [-122.317269, 37.925655]
   },
   {
+    "id": "3d351190-a44b-4c5f-8290-ab50e8f12576",
     "name": "Dublin/Pleasanton (DUBL)",
     "code": "ED",
     "address": "5801 Owens Dr., Pleasanton CA 94588",
@@ -136,6 +153,7 @@
     "coordinates": [-121.900367, 37.701695]
   },
   {
+    "id": "4c7eaaf3-4a2a-47ea-b246-4e09639f0d91",
     "name": "Embarcadero (EMBR)",
     "code": "EM",
     "address": "298 Market Street, San Francisco CA 94111",
@@ -144,6 +162,7 @@
     "coordinates": [-122.396742, 37.792976]
   },
   {
+    "id": "cd6c532a-7084-416e-b26f-4dcdaeac2e7a",
     "name": "Fremont (FRMT)",
     "code": "FM",
     "address": "2000 BART Way, Fremont CA 94536",
@@ -152,6 +171,7 @@
     "coordinates": [-121.9764, 37.557355]
   },
   {
+    "id": "fac3bbcf-8d73-4d58-89ed-42f035163528",
     "name": "Fruitvale (FTVL)",
     "code": "FV",
     "address": "3401 East 12th Street, Oakland CA 94601",
@@ -160,6 +180,7 @@
     "coordinates": [-122.224274, 37.774963]
   },
   {
+    "id": "de02beec-a4f3-480d-aad0-06f34f8892c1",
     "name": "Glen Park (GLEN)",
     "code": "GP",
     "address": "2901 Diamond Street, San Francisco CA 94131",
@@ -168,6 +189,7 @@
     "coordinates": [-122.434092, 37.732921]
   },
   {
+    "id": "64984a33-f100-4091-9b0a-def0cb8e4b52",
     "name": "Hayward (HAYW)",
     "code": "HY",
     "address": "699 'B' Street, Hayward CA 94541",
@@ -176,6 +198,7 @@
     "coordinates": [-122.087967, 37.670399]
   },
   {
+    "id": "28b4eef5-574c-4527-810b-2840ffd12f6d",
     "name": "Lake Merritt (LAKE)",
     "code": "LM",
     "address": "800 Madison Street, Oakland CA 94607",
@@ -184,6 +207,7 @@
     "coordinates": [-122.265609, 37.797484]
   },
   {
+    "id": "8e0b7984-7620-40b0-8d4b-3c757e04a0d1",
     "name": "MacArthur (MCAR)",
     "code": "MA",
     "address": "555 40th Street, Oakland CA 94609",
@@ -192,6 +216,7 @@
     "coordinates": [-122.267227, 37.828415]
   },
   {
+    "id": "5ea608f3-427a-4c5c-8f06-868a950a60e7",
     "name": "Millbrae (MLBR)",
     "code": "MB",
     "address": "200 North Rollins Road, Millbrae CA 94030",
@@ -200,6 +225,7 @@
     "coordinates": [-122.38666, 37.599787]
   },
   {
+    "id": "0824568e-7c18-40cc-a7e4-c485b104b3ca",
     "name": "Montgomery St. (MONT)",
     "code": "MT",
     "address": "598 Market Street, San Francisco CA 94104",
@@ -208,6 +234,7 @@
     "coordinates": [-122.401407, 37.789256]
   },
   {
+    "id": "3a957205-cc57-4e2a-9766-c49a044ccc7d",
     "name": "North Berkeley (NBRK)",
     "code": "NB",
     "address": "1750 Sacramento Street, Berkeley CA 94702",
@@ -216,6 +243,7 @@
     "coordinates": [-122.283451, 37.87404]
   },
   {
+    "id": "28ed95bf-633b-4b33-b848-328d07844923",
     "name": "North Concord/Martinez (NCON)",
     "code": "NC",
     "address": "3700 Port Chicago Highway, Concord CA 94520",
@@ -224,6 +252,7 @@
     "coordinates": [-122.024597, 38.003275]
   },
   {
+    "id": "9bdd0e63-77fb-4f97-aae4-3edb225372da",
     "name": "Orinda (ORIN)",
     "code": "OR",
     "address": "11 Camino Pablo, Orinda CA 94563",
@@ -232,6 +261,7 @@
     "coordinates": [-122.183791, 37.878361]
   },
   {
+    "id": "8ab0d326-b87d-43e0-9522-6aa6de970e19",
     "name": "Pleasant Hill/Contra Costa Centre (PHIL)",
     "code": "PH",
     "address": "1365 Treat Blvd., Walnut Creek CA 94597",
@@ -240,6 +270,7 @@
     "coordinates": [-122.056013, 37.928403]
   },
   {
+    "id": "a00193d0-40c2-4154-b15c-fe0aa77cd4cf",
     "name": "Pittsburg/Bay Point (PITT)",
     "code": "WP",
     "address": "1700 West Leland Road, Pittsburg CA 94565",
@@ -248,6 +279,7 @@
     "coordinates": [-121.945154, 38.018914]
   },
   {
+    "id": "533ed65e-f9bc-4891-8f85-c3bae3d64d0a",
     "name": "El Cerrito Plaza (PLZA)",
     "code": "EP",
     "address": "6699 Fairmount Avenue, El Cerrito CA 94530",
@@ -256,6 +288,7 @@
     "coordinates": [-122.299272, 37.903059]
   },
   {
+    "id": "a70728ec-a690-488f-a755-fd0495538a32",
     "name": "Powell St. (POWL)",
     "code": "PL",
     "address": "899 Market Street, San Francisco CA 94102",
@@ -264,6 +297,7 @@
     "coordinates": [-122.406857, 37.784991]
   },
   {
+    "id": "2c13c3b8-94df-4b77-99e3-da790f047c10",
     "name": "Richmond (RICH)",
     "code": "RM",
     "address": "1700 Nevin Avenue, Richmond CA 94801",
@@ -272,6 +306,7 @@
     "coordinates": [-122.353165, 37.936887]
   },
   {
+    "id": "b440055c-ca2c-4d9c-92f3-ec91ef1e97ca",
     "name": "Rockridge (ROCK)",
     "code": "RR",
     "address": "5660 College Avenue, Oakland CA 94618",
@@ -280,6 +315,7 @@
     "coordinates": [-122.251793, 37.844601]
   },
   {
+    "id": "051a1563-1578-4d4d-b889-b1133ac348c4",
     "name": "San Leandro (SANL)",
     "code": "SL",
     "address": "1401 San Leandro Blvd., San Leandro CA 94577",
@@ -288,6 +324,7 @@
     "coordinates": [-122.161311, 37.722619]
   },
   {
+    "id": "50916769-2758-4159-9df4-2b36988e6af3",
     "name": "San Bruno (SBRN)",
     "code": "SB",
     "address": "1151 Huntington Avenue, San Bruno CA 94066",
@@ -296,6 +333,7 @@
     "coordinates": [-122.416038, 37.637753]
   },
   {
+    "id": "2e26f48c-3980-4719-9091-cab467c808fb",
     "name": "San Francisco Int'l Airport (SFIA)",
     "code": "SO",
     "address": "International Terminal, Level 3, San Francisco Int'l Airport CA 94128",
@@ -304,6 +342,7 @@
     "coordinates": [-122.392612, 37.616035]
   },
   {
+    "id": "d7509aa3-afe7-4f2f-8754-4f35ee1073a5",
     "name": "South Hayward (SHAY)",
     "code": "SH",
     "address": "28601 Dixon Street, Hayward CA 94544",
@@ -312,6 +351,7 @@
     "coordinates": [-122.057551, 37.6348]
   },
   {
+    "id": "f0ca6137-c826-494a-b993-9486447b534c",
     "name": "South San Francisco (SSAN)",
     "code": "SS",
     "address": "1333 Mission Road, South San Francisco CA 94080",
@@ -320,6 +360,7 @@
     "coordinates": [-122.444116, 37.664174]
   },
   {
+    "id": "75bc49da-533c-474f-a7e0-9c0053df87ac",
     "name": "Union City (UCTY)",
     "code": "UC",
     "address": "10 Union Square, Union City CA 94587",
@@ -328,6 +369,7 @@
     "coordinates": [-122.017867, 37.591208]
   },
   {
+    "id": "27c6522c-2c32-4177-9e81-f41a0fc45b30",
     "name": "Walnut Creek (WCRK)",
     "code": "WC",
     "address": "200 Ygnacio Valley Road, Walnut Creek CA 94596",
@@ -336,6 +378,7 @@
     "coordinates": [-122.067423, 37.905628]
   },
   {
+    "id": "43b1f781-137e-4bfe-bcb9-1d11265ebddf",
     "name": "West Dublin/Pleasanton (WDUB)",
     "code": "WD",
     "address": "6501 Golden Gate Drive, Dublin CA 94568",
@@ -344,6 +387,7 @@
     "coordinates": [-121.928099, 37.699759]
   },
   {
+    "id": "ed629dc3-7a7d-4505-8d5b-53082ec3db18",
     "name": "West Oakland (WOAK)",
     "code": "OW",
     "address": "1451 7th Street, Oakland CA 94607",

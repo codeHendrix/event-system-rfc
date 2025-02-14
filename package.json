@@ -22,13 +22,17 @@
     "@turf/helpers": "^7.1.0",
     "@types/mapbox-gl": "^3.4.0",
     "deck.gl": "^9.0.30",
+    "immer": "^10.1.1",
     "mapbox-gl": "^3.6.0",
     "mjolnir.js": "^2.7.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-error-boundary": "^5.0.0",
     "react-map-gl": "^7.1.7",
     "tabs-broadcast": "^3.1.12",
-    "ts-event-bus": "^4.2.0"
+    "ts-event-bus": "^4.2.0",
+    "uuid": "^11.0.5",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

@@ -13,6 +13,27 @@ export type OpenCardParams = {
   coordinates: [number, number];
 };
 
+export type EventData<T> = {
+  payload: T;
+};
+
+export enum WindowType {
+  Dashboard = 'Dashboard',
+  COP = 'COP',
+}
+
+export type ConnectionId = string;
+
+export type ConnectionState = {
+  highlighted?: boolean;
+  name?: string;
+  type?: WindowType;
+};
+
+export type ConnectionMetadata = {
+  id: ConnectionId;
+} & ConnectionState;
+
 /**
  * NOTE: STOLEN DIRECTLY FROM APP
  * */

@@ -13,8 +13,9 @@ export function Information({
     <BaseballCard>
       <Stack>
         <Controls
+          context={'cop'}
           coordinates={coordinates ?? [NaN, NaN]}
-          hideControls={['open card']}
+          id={id}
         />
       </Stack>
       <div>Hello I'm BB Card {id}</div>

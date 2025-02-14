@@ -1,19 +1,23 @@
 import { FlyToInterpolator, MapController, WebMercatorViewport } from 'deck.gl';
 import center from '@turf/center';
 import { getBufferBBox } from './utils';
-import { EventBus } from './event-bus/event-bus';
 import type { AllGeoJSON } from '@turf/helpers';
-import type { ControllerOpts, PanToParams } from './types';
+import type { ControllerOpts, EventData, PanToParams } from './types';
+import { eventManager } from './event-manager';
 
 const defaultBufferNM = 20;
 const TRANSITION_DURATION = 180;
 const TRANSITION_INTERPOLATER = new FlyToInterpolator();
-// const EventBus = getEventBus();
+
+const { broadcaster, eventTypes } = eventManager;
+const { map } = eventTypes;
 
 export class CustomMapController extends MapController {
   constructor(props: ControllerOpts) {
     super(props);
-    EventBus.panTo.on((payload) => this.zoomTo(payload));
+    broadcaster.on(map.panTo, ({ payload }: EventData<PanToParams>) =>
+      this.zoomTo(payload)
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
