@@ -9,18 +9,19 @@ import {
 } from '@mui/material';
 import { Controls } from './controls';
 import data from '../data/bart-stations.json';
-import { useStore, selectors } from '../state';
+import { useStore, selectors } from '../event-bus/state';
 import { PropsWithChildren } from 'react';
+import { theme } from '../theme';
 
 const baseSx = { '&:last-child td, &:last-child th': { border: 0 } };
 const activeSx = {
-  backgroundColor: '#ffcccb',
+  backgroundColor: theme.palette.info.contrastText,
 };
 
 function TableRow({ id, children }: PropsWithChildren<{ id: string }>) {
-  const activeId = useStore(selectors.activeId);
+  const entity = useStore(selectors.selectedEntity);
 
-  const sx = activeId === id ? { ...baseSx, ...activeSx } : baseSx;
+  const sx = entity?.id === id ? { ...baseSx, ...activeSx } : baseSx;
 
   return <MuiTableRow sx={sx}>{children}</MuiTableRow>;
 }
@@ -49,7 +50,6 @@ export default function BasicTable() {
               <TableCell align="right">{row.coordinates}</TableCell>
               <TableCell align="right">
                 <Controls
-                  context={'dashboard'}
                   coordinates={row.coordinates as [number, number]}
                   id={row.id}
                 />

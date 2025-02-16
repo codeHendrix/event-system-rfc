@@ -1,33 +1,31 @@
-import { useState } from 'react';
 import { Information } from './information';
-import { eventManager } from '../event-manager';
-import { OpenCardParams } from '../types';
+import { selectors, useStore } from '../event-bus/state';
+import { SCATTERPLOT_LAYER_1, SCATTERPLOT_LAYER_2 } from '../constants';
 
-type CardState = null | {
-  id: string;
-  coordinates: [number, number];
-};
+const InformationLookup = {
+  [SCATTERPLOT_LAYER_1]: Information,
+  [SCATTERPLOT_LAYER_2]: Information,
+} as const;
 
-type OpenCardEvent = { payload: OpenCardParams };
-
-const { broadcaster, eventTypes } = eventManager;
-const { ui } = eventTypes;
+type InformationLookupKeys = keyof typeof InformationLookup;
 
 // NOTE: could easily do a lookup here to get a custom card. for simplicity sake we just reference the same component.
 export function CardManager() {
-  const [card, setCard] = useState<CardState>(null);
+  const entity = useStore(selectors.selectedEntity);
 
-  broadcaster.once(ui.bbcard.open, (data: OpenCardEvent) => {
-    const { id, coordinates } = data.payload;
-
-    setCard({ id, coordinates });
-  });
-
-  broadcaster.once(ui.bbcard.close, () => setCard(null));
-
-  if (!card) {
+  if (!entity) {
     return null;
   }
 
-  return <Information id={card.id} coordinates={card.coordinates} />;
+  return <Information id={entity.id} coordinates={entity.coordinates} />;
+
+  // console.log(entity);
+
+  // const Component = InformationLookup[entity.layer as InformationLookupKeys];
+
+  // if (!Component) {
+  //   return null;
+  // }
+
+  // return <Component id={entity.id} coordinates={entity.coordinates} />;
 }

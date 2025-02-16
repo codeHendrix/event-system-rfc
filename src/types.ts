@@ -17,22 +17,28 @@ export type EventData<T> = {
   payload: T;
 };
 
+export type SelectedEntity = {
+  id: string;
+  coordinates: [number, number];
+  layer?: string;
+};
+
 export enum WindowType {
   Dashboard = 'Dashboard',
   COP = 'COP',
 }
 
-export type ConnectionId = string;
+export type WindowId = string;
 
-export type ConnectionState = {
+export type WindowState = {
   highlighted?: boolean;
   name?: string;
   type?: WindowType;
 };
 
-export type ConnectionMetadata = {
-  id: ConnectionId;
-} & ConnectionState;
+export type WindowMetadata = {
+  id: WindowId;
+} & WindowState;
 
 /**
  * NOTE: STOLEN DIRECTLY FROM APP

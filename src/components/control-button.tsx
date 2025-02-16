@@ -1,5 +1,5 @@
 import { IconButton, Tooltip } from '@mui/material';
-import { useStore } from '../state';
+import { selectors, useStore } from '../event-bus/state';
 
 type ControlButtonPredicate = (id: string, activeId?: string) => boolean;
 
@@ -20,9 +20,9 @@ export function ControlButton({
   shouldDisable,
   shouldRender = () => true,
 }: BaseControlButtonProps) {
-  const activeId = useStore((state) => state.activeId);
-  const disabled = shouldDisable?.(id, activeId);
-  const render = shouldRender(id, activeId);
+  const entity = useStore(selectors.selectedEntity);
+  const disabled = shouldDisable?.(id, entity?.id);
+  const render = shouldRender(id, entity?.id);
 
   if (!render) {
     return null;

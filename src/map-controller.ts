@@ -3,14 +3,13 @@ import center from '@turf/center';
 import { getBufferBBox } from './utils';
 import type { AllGeoJSON } from '@turf/helpers';
 import type { ControllerOpts, EventData, PanToParams } from './types';
-import { eventManager } from './event-manager';
+import { broadcaster, EVENTS } from './event-bus/broadcaster';
 
 const defaultBufferNM = 20;
 const TRANSITION_DURATION = 180;
 const TRANSITION_INTERPOLATER = new FlyToInterpolator();
 
-const { broadcaster, eventTypes } = eventManager;
-const { map } = eventTypes;
+const { map } = EVENTS;
 
 export class CustomMapController extends MapController {
   constructor(props: ControllerOpts) {

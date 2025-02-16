@@ -5,20 +5,22 @@ import {
   ZoomIn,
 } from '@mui/icons-material';
 import { Stack } from '@mui/material';
-import { eventManager } from '../event-manager';
 import { useCallback } from 'react';
 import { ControlButton } from './control-button';
+import { useWindows } from '../hooks/useWindows';
+import { WindowType } from '../types';
+import { broadcaster, EVENTS } from '../event-bus/broadcaster';
+import WindowSelector from './dropdown-selector';
 
 type Geometry = { type: string; coordinates: [number, number] };
 
 type ControlProps = {
   coordinates: [number, number];
   id: string;
-  context: 'cop' | 'dashboard';
+  layer?: string;
 };
 
-const { broadcaster, eventTypes } = eventManager;
-const { map, ui } = eventTypes;
+const { map, ui } = EVENTS;
 
 function handlePanTo(zoomTo: boolean, geometry: Geometry) {
   broadcaster.emit(map.panTo, {
@@ -28,15 +30,17 @@ function handlePanTo(zoomTo: boolean, geometry: Geometry) {
   });
 }
 
-function handleOpen(id: string, coordinates: [number, number]) {
-  broadcaster.emit(ui.bbcard.open, { id, coordinates });
+function handleOpen(id: string, coordinates: [number, number], layer?: string) {
+  broadcaster.emit(ui.bbcard.open, { id, coordinates, layer });
 }
 
 function handleClose() {
   broadcaster.emit(ui.bbcard.close);
 }
 
-function CenterOnControlButton({ id, coordinates, context }: ControlProps) {
+function CenterOnControlButton({ id, coordinates }: ControlProps) {
+  const { type } = useWindows();
+
   const handleOnClick = useCallback(() => {
     const geometry: Geometry = { type: 'Point', coordinates };
     handlePanTo(false, geometry);
@@ -44,8 +48,8 @@ function CenterOnControlButton({ id, coordinates, context }: ControlProps) {
 
   const handleShouldDisable = useCallback(
     (id: string, activeId?: string) =>
-      context === 'dashboard' && id === activeId,
-    [context]
+      type === WindowType.Dashboard && id === activeId,
+    [type]
   );
 
   return (
@@ -59,7 +63,9 @@ function CenterOnControlButton({ id, coordinates, context }: ControlProps) {
   );
 }
 
-function ZoomToControlButton({ id, coordinates, context }: ControlProps) {
+function ZoomToControlButton({ id, coordinates }: ControlProps) {
+  const { type } = useWindows();
+
   const handleOnClick = useCallback(() => {
     const geometry: Geometry = { type: 'Point', coordinates };
     handlePanTo(false, geometry);
@@ -67,8 +73,8 @@ function ZoomToControlButton({ id, coordinates, context }: ControlProps) {
 
   const handleShouldDisable = useCallback(
     (id: string, activeId?: string) =>
-      context === 'dashboard' && id === activeId,
-    [context]
+      type === WindowType.Dashboard && id === activeId,
+    [type]
   );
 
   return (
@@ -82,22 +88,17 @@ function ZoomToControlButton({ id, coordinates, context }: ControlProps) {
   );
 }
 
-function OpenControlButton({
-  id,
-  coordinates,
-}: {
-  id: string;
-  coordinates: [number, number];
-}) {
+function OpenControlButton({ id, coordinates, layer }: ControlProps) {
   const handleShouldRender = useCallback(
     (id?: string, activeId?: string) => id !== activeId,
     []
   );
 
   const handleOnClick = useCallback(
-    () => handleOpen(id, coordinates),
-    [coordinates, id]
+    () => handleOpen(id, coordinates, layer),
+    [coordinates, id, layer]
   );
+
   return (
     <ControlButton
       id={id}
@@ -129,10 +130,20 @@ function CloseControlButton({ id }: { id: string }) {
 export function Controls(props: ControlProps) {
   return (
     <Stack direction="row" spacing={1}>
+      <WindowSelector />
       <CenterOnControlButton {...props} />
       <ZoomToControlButton {...props} />
       <OpenControlButton {...props} />
       <CloseControlButton {...props} />
     </Stack>
   );
+}
+
+{
+  /* <BaseControl shouldRender={() => true})>
+  <CenterOnControlButton {...props} />
+</BaseControl>
+<BaseControl shouldRender={() => true})>
+        <Menu {...props} />
+</BaseControl> */
 }

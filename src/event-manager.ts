@@ -1,5 +1,5 @@
 import TabsBroadcast, { type TDefaultConfig } from 'tabs-broadcast';
-import type { EventData, ConnectionMetadata, WindowType } from './types';
+import type { EventData, WindowMetadata, WindowType } from './types';
 
 type Topics = Record<string, string> & { global: string };
 
@@ -13,7 +13,7 @@ type Events = {
       close: string;
     };
   };
-  connection: {
+  window: {
     register: string;
     unregister: string;
   };
@@ -32,9 +32,9 @@ const config: EventManagerConfig = {
     global: 'global',
   },
   eventTypes: {
-    connection: {
-      register: 'connection:register',
-      unregister: 'connection:unregister',
+    window: {
+      register: 'window:register',
+      unregister: 'window:unregister',
     },
     map: {
       panTo: 'map:pan-to',
@@ -58,7 +58,7 @@ export class EventManager {
   private static instance: EventManager;
 
   broadcaster: TabsBroadcast;
-  connections: Map<string, ConnectionMetadata>;
+  windows: Map<string, WindowMetadata>;
   eventTypes: Events;
   topics: Topics;
   system: string;
@@ -70,39 +70,36 @@ export class EventManager {
     this.topics = topics;
     this.broadcaster = new TabsBroadcast(tbConfig);
 
-    this.connections = this.load();
+    this.windows = this.load();
 
     this.init();
   }
 
   private init() {
     this.broadcaster.on(
-      this.eventTypes.connection.register,
-      ({ payload }: EventData<ConnectionMetadata>) => this.register(payload)
+      this.eventTypes.window.register,
+      ({ payload }: EventData<WindowMetadata>) => this.register(payload)
     );
 
     this.broadcaster.on(
-      this.eventTypes.connection.unregister,
-      ({ payload }: EventData<ConnectionMetadata>) => this.unregister(payload)
+      this.eventTypes.window.unregister,
+      ({ payload }: EventData<WindowMetadata>) => this.unregister(payload)
     );
-
-    console.log(this.broadcaster.getEvents());
   }
 
-  register = (connection: ConnectionMetadata) => {
-    console.log('calling register');
-    if (!this.connections.has(connection.id)) {
-      this.connections.set(connection.id, connection);
-      this.save();
+  register = (connection: WindowMetadata) => {
+    if (!this.windows.has(connection.id)) {
+      this.windows.set(connection.id, connection);
     } else {
+      this.save();
       console.log('Connection already exists:', connection.id);
     }
   };
 
-  unregister = (connection: ConnectionMetadata) => {
+  unregister = (connection: WindowMetadata) => {
     console.log('calling unregister');
-    if (this.connections.has(connection.id)) {
-      this.connections.delete(connection.id);
+    if (this.windows.has(connection.id)) {
+      this.windows.delete(connection.id);
       this.save();
     }
   };
@@ -110,11 +107,11 @@ export class EventManager {
   save() {
     console.log(
       'saving connections. number of connections to be saved',
-      this.connections.size
+      this.windows.size
     );
     localStorage.setItem(
       'connections',
-      JSON.stringify(Array.from(this.connections))
+      JSON.stringify(Array.from(this.windows))
     );
   }
 
@@ -139,21 +136,21 @@ export class EventManager {
   }
 
   getConnectionCount = () => {
-    return this?.connections?.size ?? 0;
+    return this?.windows?.size ?? 0;
   };
 
   getConnectionCountByType = (type: WindowType) =>
-    Array.from(this.connections.values()).filter((conn) => conn.type === type)
+    Array.from(this.windows.values()).filter((conn) => conn.type === type)
       .length;
 
   getConnections() {
-    return this.connections;
+    return this.windows;
   }
 
   getAllConnectionsByType = (type: WindowType) => {
     const results = [];
 
-    for (const [k, v] of this.connections) {
+    for (const [k, v] of this.windows) {
       if (v.type === type) {
         results.push({ k, v });
       }

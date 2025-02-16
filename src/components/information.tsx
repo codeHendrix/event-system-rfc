@@ -12,11 +12,7 @@ export function Information({
   return (
     <BaseballCard>
       <Stack>
-        <Controls
-          context={'cop'}
-          coordinates={coordinates ?? [NaN, NaN]}
-          id={id}
-        />
+        <Controls id={id} coordinates={coordinates ?? [NaN, NaN]} />
       </Stack>
       <div>Hello I'm BB Card {id}</div>
     </BaseballCard>
